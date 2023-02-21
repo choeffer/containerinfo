@@ -1,6 +1,6 @@
 # Containerinfo
 
-Containerinfo is a service, implemented in Python, to know what containers are running in a K8s cluster, and what their resource requests and limits are. It is able to query the resource requests and limits for all the containers of pods with labels, specified by a query parameter, from all namespaces. The results are returned as JSON and are an array of records, containing the namespace, pod name, container name and the resources for each container of the matching pods.
+Containerinfo is a service, implemented in Python, to know what containers are running in a K8s cluster, and what their resource requests and limits are. It is able to query the resource requests and limits for all the containers of Pods with labels, specified by a query parameter, from all namespaces. The results are returned as JSON and are an array of records, containing the namespace, Pod name, container name and the resources for each container of the matching Pods.
 
 E.g. when calling this service from another Pod of the cluster with the command
 
