@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "containerinfo.fullname" . }}-test-connection"
+  labels:
+    {{- include "containerinfo.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+    - name: wget
+      image: radial/busyboxplus:curl
+      command: ['curl']
+      args: ['http://{{ include "containerinfo.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}/container-resources?pod-label=NotExistingLabel']
+  restartPolicy: Never
